@@ -1,3 +1,4 @@
+'use client'
 import EditBlog from '@/component/EditBlog/EditBlog';
 import useBlogApi from '@/hooks/useBlogApi';
 import Link from 'next/link';

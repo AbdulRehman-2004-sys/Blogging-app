@@ -1,3 +1,4 @@
+'use client'
 import { useState } from 'react';
 import { FiUpload, FiChevronDown, FiUser, FiX } from 'react-icons/fi';
 import ReactQuill from 'react-quill-new';
