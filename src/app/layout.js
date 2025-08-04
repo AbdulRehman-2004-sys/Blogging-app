@@ -1,5 +1,21 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono,Inter, Roboto } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/component/Navbar/Navbar";
+import { ClerkProvider } from "@clerk/nextjs";
+import Footer from "@/component/Footer/Footer";
+import ToastProvider from "@/component/ToastProvider/ToastProvider";
+
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '700'], // optional
+  display: 'swap', // optional for performance
+})
+
+const roboto = Roboto({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+})
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,12 +34,20 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
+    <ClerkProvider>
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased ${roboto.className}` }
       >
-        {children}
+        
+        <ToastProvider/>
+        <div className="w-[100%] min-h-screen overflow-x-hidden bg-white text-black m-auto relative">
+          <Navbar />
+          {children}
+          <Footer/>
+        </div>
       </body>
     </html>
+    </ClerkProvider>
   );
 }
